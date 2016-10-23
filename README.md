@@ -1,4 +1,4 @@
-h1 Google Cloud DNS Module for Terraform
+# Google Cloud DNS Module for Terraform
 
 This module may be used to manage Google Cloud DNS zones and resource records.
 
