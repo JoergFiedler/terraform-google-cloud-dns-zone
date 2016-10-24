@@ -15,7 +15,7 @@ resource "google_dns_record_set" "default" {
   type          = "A"
   ttl           = "${var.ttl}"
 
-  managed_zone  = "${var.name}"
+  managed_zone  = "${google_dns_managed_zone.managed_zone.name}"
 
   rrdatas       = ["${var.ip_address}"]
 }
@@ -25,7 +25,7 @@ resource "google_dns_record_set" "www" {
   type          = "A"
   ttl           = "${var.ttl}"
 
-  managed_zone  = "${var.name}"
+  managed_zone  = "${google_dns_managed_zone.managed_zone.name}"
 
   rrdatas       = ["${var.ip_address}"]
 }
@@ -36,7 +36,7 @@ resource "google_dns_record_set" "record_set" {
   type          = "${lookup(var.rrecord[count.index], "type")}"
   ttl           = "${var.ttl}"
 
-  managed_zone  = "${var.name}"
+  managed_zone  = "${google_dns_managed_zone.managed_zone.name}"
 
   rrdatas       = ["${split(",", lookup(var.rrecord[count.index], "rrdata"))}"]
 }
